@@ -1,0 +1,41 @@
+.arrow-container {
+    padding: 100px;
+    border: 1px solid black;
+}
+.up {
+    width: 0; 
+    height: 0; 
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    display: inline-block;
+    border-bottom: 50px solid black;
+  }
+  
+.down {
+    width: 0; 
+    height: 0; 
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    display: inline-block;
+    border-top: 50px solid #f00;
+  }
+  
+.right {
+    width: 0; 
+    height: 0; 
+    border-top: 50px solid transparent;
+    border-bottom: 50px solid transparent;
+    display: inline-block;
+    border-left: 50px solid green;
+    
+  }
+  
+.left {
+    width: 0; 
+    height: 0; 
+    border-top: 50px solid transparent;
+    border-bottom: 50px solid transparent; 
+    display: inline-block;
+    border-right: 50px solid blue; 
+  }
+
