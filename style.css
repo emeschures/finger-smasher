@@ -41,3 +41,57 @@
     border-right: 50px solid blue; 
   }
 
+h1 {
+    font-family: 'Press Start 2P', cursive;
+    text-align: center;
+    margin: 0 auto;
+    font-size: 60px;
+    color: yellow;
+    background: black;
+    padding: 10px;
+    margin-bottom: 50px;
+}
+
+body {
+    background: yellow;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.start-button {
+    background: black;
+    color:green;
+    font-size: 20px;
+    border-radius: 20% / 30%;
+    margin-bottom: 50px;
+}
+
+.stop-button {
+    background: black;
+    color: red;
+    font-size: 20px;
+    border-radius: 20% / 30%;
+    margin-bottom: 50px;
+}
+body {
+    background-color: #e74c3c;
+    animation: bg-color 1s infinite;
+    -webkit-animation: bg-color 1s infinite;
+  }
+  
+  @-webkit-keyframes bg-color {
+    0% { background-color: #e74c3c; }
+    20% { background-color: #f1c40f; }
+    40% { background-color: #1abc9c; }
+    60% { background-color: #3498db; }
+    80% { background-color: #9b59b6; }
+    100% { background-color: #e74c3c; }
+  }
+  
+  @keyframes bg-color {
+    0% { background-color: #e74c3c; }
+    20% { background-color: #f1c40f; }
+    40% { background-color: #1abc9c; }
+    60% { background-color: #3498db; }
+    80% { background-color: #9b59b6; }
+    100% { background-color: #e74c3c; }
+  }
