@@ -3,11 +3,15 @@ var $startButton = $(".start-button");
 var $stopButton = $(".stop-button");
 var $arrowContainer = $(".arrow-container");
 var $gameScore = $(".score-count");
+var $p1Score = $("#p1-score");
+var $p2Score = $("#p2-score");
+var currentPlayer = "player 1";
+
 
 // current game variables
 var currentArrow = null;
 var pressedArrow = null;
-var gameScore = 0;
+var currentScore = 0;
 var countDown = 10;
 
 // create timer
@@ -26,7 +30,7 @@ var countDown = 10;
 // }
 
 // listen if stop game button clicked
-$stopButton.on("click", stopGame);
+// $stopButton.on("click", stopGame);
 
 
 // function to compare  
@@ -48,9 +52,9 @@ function compareArrows(event) {
     console.log(pressedArrow);
     // if correct arrow matches arrow clicked add +1 to score
     if(currentArrow === pressedArrow) {
-        gameScore++;
+        currentScore++;
         // game score passes to score board
-        $gameScore.text(gameScore);  
+        $gameScore.text(currentScore);  
                                       
         
         // set time out for x milliseconds
@@ -70,7 +74,7 @@ function compareArrows(event) {
         // make each arrow flash for x milliseconds
         
     }
-    console.log(gameScore, " gameScore");
+    console.log(currentScore, " gameScore");
 }
 
 // function to start game
@@ -83,6 +87,8 @@ function startGame() {
         countDown = countDown-1;
             if(countDown === 0) {
                 clearInterval(timer);
+                stopGame();
+
             }
                 console.log(countDown);
                 $("#time-count").text(countDown);
@@ -95,9 +101,22 @@ function startGame() {
 function stopGame() {
     console.log("Game stopped");
     $arrowContainer.removeClass(currentArrow);
-
-
+    toggleCurrentPlayer();
+    currentScore = 0;
+    $gameScore.text(currentScore);
+    $(document).off("keydown", compareArrows);
 }
+
+function toggleCurrentPlayer() {
+    if(currentPlayer === "player 1") {
+        $p1Score.text(currentScore);
+            currentPlayer = "player 2";
+            console.log(currentPlayer)
+    } else {
+        $p2Score.text(currentScore);    
+        currentPlayer = "player 1";
+        console.log(currentPlayer)
+}}
 // create renderArrow function    
 function renderArrow() {
     // create variable for all arrows []
