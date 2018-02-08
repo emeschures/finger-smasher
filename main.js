@@ -103,6 +103,7 @@ function stopGame() {
     $arrowContainer.removeClass(currentArrow);
     toggleCurrentPlayer();
     currentScore = 0;
+    countDown = 10;
     $gameScore.text(currentScore);
     $(document).off("keydown", compareArrows);
 }
@@ -132,5 +133,5 @@ function getRandomIndex(arrowArray) {
     return Math.floor(Math.random() * arrowArray.length);
 }
 
-setClickEvent();
+// setClickEvent();
 
