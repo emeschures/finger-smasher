@@ -1,12 +1,12 @@
 // jQuery elements
 var $startButton = $(".start-button");
-
+var $resetButton = $(".reset-button");
 var $arrowContainer = $(".arrow-container");
 var $gameScore = $(".score-count");
 var $p1Score = $("#p1-score");
 var $p2Score = $("#p2-score");
 var currentPlayer = "player 1";
-
+var $timerCount = $("#time-count");
 
 // current game variables
 var currentArrow = null;
@@ -17,6 +17,7 @@ var arrowIntervalId = null;
 
 
 $startButton.on("click", startGame); 
+$resetButton.on("click", resetGame);
 
 
 // function to compare  
@@ -49,8 +50,6 @@ function compareArrows(event) {
 function startGame() {
     console.log("Game started");
     // initiate timer countdown
-    // render first arrow
-    // call arrow
     timer = setInterval(function() {
         countDown = countDown-1;
             if(countDown === 0) {
@@ -61,50 +60,81 @@ function startGame() {
                 console.log(countDown);
                 $("#time-count").text(countDown);
     }, 1000);
+    // render first arrow
     renderArrow();
-    arrowIntervalId = setInterval(renderArrow, 2000);
+    arrowIntervalId = setInterval(renderArrow, 700);
+    // call arrow
     setArrowEvent();
+    $("body").addClass("body");
 }
 
-// function to stop game
+// reset game function
+function resetGame() {
+    console.log("Game reset");
+    $arrowContainer.removeClass(currentArrow);
+    clearInterval(timer);
+    clearInterval(arrowIntervalId); 
+    currentScore = 0;
+    $p1Score.text(0);
+    $p2Score.text(0);
+    countDown = 10;
+    $timerCount.text(countDown);
+    $("body").removeClass("body");
+    $(document).off("keydown", compareArrows);
+}
+// stop game function
 function stopGame() {
-    console.log("Game stopped");
     $arrowContainer.removeClass(currentArrow);
     toggleCurrentPlayer();
     currentScore = 0;
     countDown = 10;
     $gameScore.text(currentScore);
     $(document).off("keydown", compareArrows);
-}
+   
+    }
+    
 
+// switch between players
 function toggleCurrentPlayer() {
     if(currentPlayer === "player 1") {
         $p1Score.text(currentScore);
             currentPlayer = "player 2";
-            console.log(currentPlayer)
+            console.log(currentPlayer);
     } else {
         $p2Score.text(currentScore);    
+        playerWinner();
         currentPlayer = "player 1";
-        console.log(currentPlayer)
+        console.log(currentPlayer); 
+       
 }}
 
-// create renderArrow function    
+// create renderArrow function to show and remove arrows    
 function renderArrow() {
-    // create variable for all arrows []
     var arrows = ["up" , "down" , "left", "right"];
-    // create variable for random arrow 
     var index = getRandomIndex(arrows);
     $arrowContainer.removeClass(currentArrow);
-    // $arrowContainer.removeClass(currentArrow);
     currentArrow = arrows[index];
     console.log(currentArrow);
     $arrowContainer.addClass(currentArrow);
-
-    
 }
 function getRandomIndex(arrowArray) {
     return Math.floor(Math.random() * arrowArray.length);
 }
 
-
-
+// display winner
+function playerWinner() {
+    console.log($p1Score.text())
+    console.log($p2Score.text())
+    var player1 = parseInt($p1Score.text());
+    var player2 = parseInt($p2Score.text());
+    if(player1 > player2) {
+        swal("Player 1 wins");
+        return "Player 1 wins";   
+    } else if (player1 === player2) {
+        swal("Tie game");
+        return "Tie game";
+    } else if(player1 < player2) {
+        swal("Player 2 wins");
+        return "Player 2 wins";
+    }
+}
