@@ -8,12 +8,26 @@ var $gameScore = $(".score-count");
 var currentArrow = null;
 var pressedArrow = null;
 var gameScore = 0;
+var countDown = 10;
 
+// create timer
+// timer = setInterval(function() {
+//     countDown = countDown-1;
+//         if(countDown === 0) {
+//             clearInterval(timer);
+//         }
+//             console.log(countDown);
+//             $("#time-count").text(countDown);
+// }, 1000);
 
 // function to listen if start game button clicked
-function setClickEvent() {
-    $startButton.on("click", startGame) 
-}
+// function setClickEvent() {
+    $startButton.on("click", startGame); 
+// }
+
+// listen if stop game button clicked
+$stopButton.on("click", stopGame);
+
 
 // function to compare  
 function setArrowEvent() {
@@ -36,12 +50,13 @@ function compareArrows(event) {
     if(currentArrow === pressedArrow) {
         gameScore++;
         // game score passes to score board
-        $gameScore.text(gameScore);                                
+        $gameScore.text(gameScore);  
+                                      
         
-        // // set time out for x milliseconds
+        // set time out for x milliseconds
         // setTimeout(function() {
 
-        // }, 1000)
+        // }, 2000)
         
         // // after time out set current arrow to null
         // currentArrow = null;
@@ -58,16 +73,31 @@ function compareArrows(event) {
     console.log(gameScore, " gameScore");
 }
 
-// 
+// function to start game
 function startGame() {
     console.log("Game started");
     // initiate timer countdown
     // render first arrow
     // call arrow
+    timer = setInterval(function() {
+        countDown = countDown-1;
+            if(countDown === 0) {
+                clearInterval(timer);
+            }
+                console.log(countDown);
+                $("#time-count").text(countDown);
+    }, 1000);
     renderArrow();
     setArrowEvent();
 }
 
+// function to stop game
+function stopGame() {
+    console.log("Game stopped");
+    $arrowContainer.removeClass(currentArrow);
+
+
+}
 // create renderArrow function    
 function renderArrow() {
     // create variable for all arrows []
@@ -84,3 +114,4 @@ function getRandomIndex(arrowArray) {
 }
 
 setClickEvent();
+

@@ -3,6 +3,7 @@
     height: 200px;
     margin: 0 auto;
     border: 1px solid black;
+    margin-top: 20px;
 }
 .up {
     width: 0; 
@@ -76,6 +77,7 @@ body {
     background-color: #e74c3c;
     animation: bg-color 1s infinite;
     -webkit-animation: bg-color 1s infinite;
+
   }
   
   @-webkit-keyframes bg-color {
@@ -85,6 +87,7 @@ body {
     60% { background-color: #3498db; }
     80% { background-color: #9b59b6; }
     100% { background-color: #e74c3c; }
+    
   }
   
   @keyframes bg-color {
@@ -95,3 +98,5 @@ body {
     80% { background-color: #9b59b6; }
     100% { background-color: #e74c3c; }
   }
+
+
