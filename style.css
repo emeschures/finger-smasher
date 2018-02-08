@@ -1,0 +1,102 @@
+.arrow-container {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    border: 1px solid black;
+    margin-top: 20px;
+}
+.up {
+    width: 0; 
+    height: 0; 
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    
+    border-bottom: 50px solid black;
+  }
+  
+.down {
+    width: 0; 
+    height: 0; 
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    
+    border-top: 50px solid #f00;
+  }
+  
+.right {
+    width: 0; 
+    height: 0; 
+    border-top: 50px solid transparent;
+    border-bottom: 50px solid transparent;
+    
+    border-left: 50px solid green;
+    
+  }
+  
+.left {
+    width: 0; 
+    height: 0; 
+    border-top: 50px solid transparent;
+    border-bottom: 50px solid transparent; 
+    
+    border-right: 50px solid blue; 
+  }
+
+h1 {
+    font-family: 'Press Start 2P', cursive;
+    text-align: center;
+    margin: 0 auto;
+    font-size: 60px;
+    color: yellow;
+    background: black;
+    padding: 10px;
+    margin-bottom: 50px;
+}
+
+body {
+    background: yellow;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.start-button {
+    background: black;
+    color:green;
+    font-size: 20px;
+    border-radius: 20% / 30%;
+    margin-bottom: 50px;
+}
+
+.stop-button {
+    background: black;
+    color: red;
+    font-size: 20px;
+    border-radius: 20% / 30%;
+    margin-bottom: 50px;
+}
+body {
+    background-color: #e74c3c;
+    animation: bg-color 1s infinite;
+    -webkit-animation: bg-color 1s infinite;
+
+  }
+  
+  @-webkit-keyframes bg-color {
+    0% { background-color: #e74c3c; }
+    20% { background-color: #f1c40f; }
+    40% { background-color: #1abc9c; }
+    60% { background-color: #3498db; }
+    80% { background-color: #9b59b6; }
+    100% { background-color: #e74c3c; }
+    
+  }
+  
+  @keyframes bg-color {
+    0% { background-color: #e74c3c; }
+    20% { background-color: #f1c40f; }
+    40% { background-color: #1abc9c; }
+    60% { background-color: #3498db; }
+    80% { background-color: #9b59b6; }
+    100% { background-color: #e74c3c; }
+  }
+
+
