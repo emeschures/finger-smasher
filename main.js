@@ -1,6 +1,6 @@
 // jQuery elements
 var $startButton = $(".start-button");
-var $stopButton = $(".stop-button");
+
 var $arrowContainer = $(".arrow-container");
 var $gameScore = $(".score-count");
 var $p1Score = $("#p1-score");
@@ -13,24 +13,10 @@ var currentArrow = null;
 var pressedArrow = null;
 var currentScore = 0;
 var countDown = 10;
+var arrowIntervalId = null;
 
-// create timer
-// timer = setInterval(function() {
-//     countDown = countDown-1;
-//         if(countDown === 0) {
-//             clearInterval(timer);
-//         }
-//             console.log(countDown);
-//             $("#time-count").text(countDown);
-// }, 1000);
 
-// function to listen if start game button clicked
-// function setClickEvent() {
-    $startButton.on("click", startGame); 
-// }
-
-// listen if stop game button clicked
-// $stopButton.on("click", stopGame);
+$startButton.on("click", startGame); 
 
 
 // function to compare  
@@ -46,7 +32,6 @@ function compareArrows(event) {
         "39":"right",
         "40":"down"
     }
-
     // pressed arrow corresponds with arrow key number
     pressedArrow = arrowKeyNumbers[event.which];
     console.log(pressedArrow);
@@ -55,24 +40,7 @@ function compareArrows(event) {
         currentScore++;
         // game score passes to score board
         $gameScore.text(currentScore);  
-                                      
-        
-        // set time out for x milliseconds
-        // setTimeout(function() {
 
-        // }, 2000)
-        
-        // // after time out set current arrow to null
-        // currentArrow = null;
-        
-        // // remove class 
-        // $arrowContainer.removeClass(currentArrow);
-        
-        // // render new arrow
-        // renderArrow();
-        
-        // make each arrow flash for x milliseconds
-        
     }
     console.log(currentScore, " gameScore");
 }
@@ -87,13 +55,14 @@ function startGame() {
         countDown = countDown-1;
             if(countDown === 0) {
                 clearInterval(timer);
+                clearInterval(arrowIntervalId)
                 stopGame();
-
             }
                 console.log(countDown);
                 $("#time-count").text(countDown);
     }, 1000);
     renderArrow();
+    arrowIntervalId = setInterval(renderArrow, 2000);
     setArrowEvent();
 }
 
@@ -118,20 +87,24 @@ function toggleCurrentPlayer() {
         currentPlayer = "player 1";
         console.log(currentPlayer)
 }}
+
 // create renderArrow function    
 function renderArrow() {
     // create variable for all arrows []
     var arrows = ["up" , "down" , "left", "right"];
     // create variable for random arrow 
     var index = getRandomIndex(arrows);
+    $arrowContainer.removeClass(currentArrow);
+    // $arrowContainer.removeClass(currentArrow);
     currentArrow = arrows[index];
     console.log(currentArrow);
     $arrowContainer.addClass(currentArrow);
+
     
 }
 function getRandomIndex(arrowArray) {
     return Math.floor(Math.random() * arrowArray.length);
 }
 
-// setClickEvent();
+
 

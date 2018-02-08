@@ -6,41 +6,36 @@
     margin-top: 20px;
 }
 .up {
-    width: 0; 
-    height: 0; 
-    border-left: 50px solid transparent;
-    border-right: 50px solid transparent;
+        width: 0;
+        height: 0;
+        border-left: 50px solid transparent;
+        border-right: 50px solid transparent;
+        border-bottom: 100px solid green;
+    }
     
-    border-bottom: 50px solid black;
-  }
-  
 .down {
-    width: 0; 
-    height: 0; 
-    border-left: 50px solid transparent;
-    border-right: 50px solid transparent;
-    
-    border-top: 50px solid #f00;
-  }
+        width: 0;
+        height: 0;
+        border-left: 50px solid transparent;
+        border-right: 50px solid transparent;
+        border-top: 100px solid blue;
+    }
   
 .right {
-    width: 0; 
-    height: 0; 
-    border-top: 50px solid transparent;
-    border-bottom: 50px solid transparent;
-    
-    border-left: 50px solid green;
-    
-  }
+        width: 0;
+        height: 0;
+        border-top: 50px solid transparent;
+        border-left: 100px solid yellow;
+        border-bottom: 50px solid transparent;
+    }
   
 .left {
-    width: 0; 
-    height: 0; 
-    border-top: 50px solid transparent;
-    border-bottom: 50px solid transparent; 
-    
-    border-right: 50px solid blue; 
-  }
+        width: 0;
+        height: 0;
+        border-top: 50px solid transparent;
+        border-right: 100px solid black;
+        border-bottom: 50px solid transparent;
+    }
 
 h1 {
     font-family: 'Press Start 2P', cursive;
@@ -66,13 +61,14 @@ body {
     margin-bottom: 50px;
 }
 
-.stop-button {
+.reset-button {
     background: black;
-    color: red;
+    color:red;
     font-size: 20px;
     border-radius: 20% / 30%;
     margin-bottom: 50px;
 }
+
 body {
     background-color: #e74c3c;
     animation: bg-color 1s infinite;
